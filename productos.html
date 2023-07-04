@@ -26,6 +26,11 @@
                 </section>
                 <section v-else>
                     <div class="table-responsive">
+                        <div class="mb-3">
+                            <input type="text" v-model="searchQuery" class="form-control search-input" placeholder="Buscar">
+                            <button class="btn btn-primary" @click="searchProduct">Buscar</button>
+                            <button class="btn btn-secondary" @click="resetSearch">Restablecer</button>
+                        </div>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
