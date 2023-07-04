@@ -29,16 +29,20 @@ const { createApp } = Vue
                 })
         },
         eliminar(producto) {
-            const url = this.url+'/' + producto;
-            var options = {
+            const confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto?");
+            if (confirmacion) {
+              const url = this.url + '/' + producto;
+              var options = {
                 method: 'DELETE',
-            }
-            fetch(url, options)
+              }
+              fetch(url, options)
                 .then(res => res.text()) // or res.json()
                 .then(res => {
-                    location.reload();
-                })
-        },
+                  location.reload();
+                });
+            }
+          },
+          
         grabar(){
             let producto = {
                 nombre:this.nombre,
@@ -55,7 +59,7 @@ const { createApp } = Vue
             }
             fetch(this.url, options)
                 .then(function () {
-                    alert("Registro grabado")
+                    alert("Producto Creado")
                     window.location.href = "./productos.html";  
                 })
                 .catch(err => {
