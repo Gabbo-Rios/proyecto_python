@@ -19,11 +19,13 @@ ma=Marshmallow(app)   #crea el objeto ma de de la clase Marshmallow
 class Producto(db.Model):   # la clase Producto hereda de db.Model    
     id=db.Column(db.Integer, primary_key=True)   #define los campos de la tabla
     nombre=db.Column(db.String(100))
+    categoria=db.Column(db.String(100))
     precio=db.Column(db.Integer)
     stock=db.Column(db.Integer)
     imagen=db.Column(db.String(400))
-    def __init__(self,nombre,precio,stock,imagen):   #crea el  constructor de la clase
+    def __init__(self,nombre,categoria,precio,stock,imagen):   #crea el  constructor de la clase
         self.nombre=nombre   # no hace falta el id porque lo crea sola mysql por ser auto_incremento
+        self.categoria=categoria
         self.precio=precio
         self.stock=stock
         self.imagen=imagen
@@ -41,7 +43,7 @@ with app.app_context():
 #  ************************************************************
 class ProductoSchema(ma.Schema):
     class Meta:
-        fields=('id','nombre','precio','stock','imagen')
+        fields=('id','nombre','categoria','precio','stock','imagen')
 
 
 
@@ -81,10 +83,11 @@ def delete_producto(id):
 def create_producto():
     #print(request.json)  # request.json contiene el json que envio el cliente
     nombre=request.json['nombre']
+    categoria=request.json['categoria']
     precio=request.json['precio']
     stock=request.json['stock']
     imagen=request.json['imagen']
-    new_producto=Producto(nombre,precio,stock,imagen)
+    new_producto=Producto(nombre,categoria,precio,stock,imagen)
     db.session.add(new_producto)
     db.session.commit()
     return producto_schema.jsonify(new_producto)
@@ -95,6 +98,7 @@ def update_producto(id):
     producto=Producto.query.get(id)
  
     producto.nombre=request.json['nombre']
+    producto.categoria=request.json['categoria']
     producto.precio=request.json['precio']
     producto.stock=request.json['stock']
     producto.imagen=request.json['imagen']

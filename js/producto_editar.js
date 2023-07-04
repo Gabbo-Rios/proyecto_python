@@ -7,6 +7,7 @@ const { createApp } = Vue
       return {
         id:0,
         nombre:"",
+        categoria:"", 
         imagen:"",
         stock:0,
         precio:0,
@@ -20,7 +21,8 @@ const { createApp } = Vue
                 .then(data => {
                     console.log(data)
                     this.id=data.id
-                    this.nombre = data.nombre;
+                    this.nombre = data.nombre
+                    this.categoria = data.categoria
                     this.imagen=data.imagen
                     this.stock=data.stock
                     this.precio=data.precio                    
@@ -33,6 +35,7 @@ const { createApp } = Vue
         modificar() {
             let producto = {
                 nombre:this.nombre,
+                categoria:this.categoria,
                 precio: this.precio,
                 stock: this.stock,
                 imagen:this.imagen
