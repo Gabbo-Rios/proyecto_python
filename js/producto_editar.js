@@ -48,7 +48,7 @@ const { createApp } = Vue
             }
             fetch(this.url, options)
                 .then(function () {
-                    alert("Registro modificado")
+                    alert("Producto modificado")
                     window.location.href = "./productos.html";             
                 })
                 .catch(err => {
