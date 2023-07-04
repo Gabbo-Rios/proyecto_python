@@ -7,7 +7,7 @@ app=Flask(__name__)  # crear el objeto app de la clase Flask
 CORS(app) #modulo cors es para que me permita acceder desde el frontend al backend
 
 # configuro la base de datos, con el nombre el usuario y la clave
-# app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://user:password@localhost/proyecto_python'
+# app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://user:password@localhost/proyecto'
 app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:@localhost/proyecto'
 # URI de la BBDD                          driver de la BD  user:clave@URLBBDD/nombreBBDD
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False #none
@@ -30,12 +30,7 @@ class Producto(db.Model):   # la clase Producto hereda de db.Model
         self.stock=stock
         self.imagen=imagen
 
-
-
-
     #  si hay que crear mas tablas , se hace aqui
-
-
 
 
 with app.app_context():
@@ -111,4 +106,4 @@ def update_producto(id):
 
 # programa principal *******************************
 if __name__=='__main__':  
-    app.run(debug=True, port=5000)    # ejecuta el servidor Flask en el puerto 5000
+    app.run(debug=True, port=5000)    # ejecuta el servidor Flask en el puerto 5000S
