@@ -1,9 +1,0 @@
-1 - agregar columna categoria / dany
-2 - poner contraseña para ingresar / sofy
-3 - agregar styles / mica
-4 - agregar productos / gabo
-5 - copiar la carpeta imagenes / gabo
-
-6 - agregar confirmacion de cambios y para eliminar
-7 - agregar buscador / dany
-8 - 
